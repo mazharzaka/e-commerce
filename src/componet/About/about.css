@@ -18,9 +18,9 @@
 }
 .cards {
   margin-top: 3rem;
-  height: 300px !important;
+  height: 390px !important;
 
-  width: 85%;
+  width: 80%;
   display: flex !important;
 }
 .card {
@@ -31,4 +31,62 @@
 .swiper-autoheight .swiper-slide {
   justify-content: center !important;
   display: flex;
+}
+.ca {
+  height: 100%;
+  width: 100%;
+}
+
+.image {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.image img {
+  height: 100%;
+  transition: transform 0.3s; /* Animation */
+}
+
+.image:hover img,
+.image:focus img {
+  transform: scale(1.2);
+}
+.txt {
+  margin-top: 18px;
+  padding: 1rem;
+}
+.lable {
+  text-align: center;
+}
+.all {
+  margin: 5px;
+  display: flex;
+  /* justify-content: space-between; */
+  height: 40px;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+.price {
+  font-size: 15px;
+  font-weight: 400;
+}
+.slider {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  width: 290px !important;
+  height: 360px !important;
+}
+.add {
+  margin: 5px;
+  display: flex;
+  /* justify-content: space-between; */
+  height: 50px;
+  justify-content: space-between;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1);*/
+  align-items: center;
+}
+.la-add {
+  font-size: 16px;
+  font-weight: 100;
 }

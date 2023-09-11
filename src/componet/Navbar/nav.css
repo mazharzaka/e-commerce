@@ -30,6 +30,7 @@
 }
 body {
   font-family: "Roboto Condensed", sans-serif;
+  scroll-behavior: smooth;
 }
 .logo {
   margin-left: 100px;
@@ -85,13 +86,7 @@ body {
   z-index: 8;
   opacity: 0.6;
 }
-.pro {
-  position: fixed;
-  left: -40px;
-  top: 250px;
-  z-index: 10;
-  rotate: 270deg;
-}
+
 .pro a {
   text-decoration: none;
   font-size: 20px;
@@ -99,6 +94,28 @@ body {
   text-transform: uppercase;
   color: #000000;
   letter-spacing: 2px;
+}
+.pro {
+  position: fixed;
+  left: -40px;
+  top: 250px;
+  z-index: 10;
+  rotate: 270deg;
+}
+.tit {
+  position: fixed;
+  right: 0px;
+  top: 250px;
+  z-index: 10;
+  rotate: 90deg;
+}
+.tit span {
+  /* text-decoration: none; */
+  font-size: 21px;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #000000;
+  letter-spacing: 3px;
 }
 .text {
   height: 100%;

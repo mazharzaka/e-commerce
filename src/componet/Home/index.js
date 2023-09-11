@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -11,10 +11,20 @@ import {Autoplay, Pagination, Navigation} from "swiper/modules";
 export default function Home() {
   const scroll = () => {
     window.scrollTo({
-      top: 230,
+      top: 450,
       behavior: "smooth",
     });
   };
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      console.log(1);
+      if (window.scrollY > 362) {
+        document.querySelector(".nametit").innerHTML = "trending";
+      } else if (window.scrollY < 363) {
+        document.querySelector(".nametit").innerHTML = "home";
+      }
+    });
+  }, []);
   return (
     <div>
       <div className="text">
