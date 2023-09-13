@@ -38,7 +38,7 @@ export default function About(props) {
               <SwiperSlide className="slider">
                 <div className="ca">
                   <div className="image">
-                    <img src={e.imageCover} />
+                    <img className="img" src={e.imageCover} />
                   </div>
                   <div className="txt">
                     <div className="lable">{e.title}</div>

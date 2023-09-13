@@ -1,0 +1,55 @@
+.pic {
+  width: 100%;
+  height: 670px;
+  margin-top: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.pic img {
+  width: 100%;
+  height: 100%;
+}
+.text-pic {
+  position: absolute;
+  height: 600px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 120px;
+  margin-top: 16px;
+  align-items: center;
+  color: #fff;
+  font-weight: 700;
+  margin-left: -105px;
+}
+.cantain {
+  width: 85%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.proud-card {
+  width: 250px;
+  /* height: 600px; */
+  margin: 5px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+.image.active .p-pic1 {
+  display: none;
+}
+.image.active .p-pic2 {
+  display: block;
+}
+.image .p-pic1 {
+  display: block;
+}
+.image .p-pic2 {
+  display: none;
+}
+.prodects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -18,10 +18,12 @@ export default function Home() {
   useEffect(() => {
     window.addEventListener("scroll", () => {
       console.log(1);
-      if (window.scrollY > 362) {
+      if (window.scrollY > 362 && window.scrollY < 950) {
         document.querySelector(".nametit").innerHTML = "trending";
       } else if (window.scrollY < 363) {
         document.querySelector(".nametit").innerHTML = "home";
+      } else if (window.scrollY > 950) {
+        document.querySelector(".nametit").innerHTML = "SUMMER SALE";
       }
     });
   }, []);

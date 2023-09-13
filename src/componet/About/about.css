@@ -48,8 +48,8 @@
   transition: transform 0.3s; /* Animation */
 }
 
-.image:hover img,
-.image:focus img {
+.image:hover .img,
+.image:focus .img {
   transform: scale(1.2);
 }
 .txt {
