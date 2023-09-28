@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import "./nav.css";
 import {FaCartPlus} from "react-icons/fa";
+import {BsHeartFill} from "react-icons/bs";
+import {Link} from "react-router-dom";
 export default function Nav() {
   const [nav, setnav] = useState(true);
   useEffect(() => {
@@ -24,14 +26,24 @@ export default function Nav() {
         <span className="nametit">Home</span>
       </div>
       <div className="nav">
-        <div className="logo">Mazhar</div>
+        {" "}
+        <Link to="/">
+          <div className="logo">Mazhar</div>
+        </Link>
         <div className="list">
           <ul className="list">
-            <li className="item active">Home</li>
+            {" "}
+            <Link to="/">
+              <li className="item active">Home</li>
+            </Link>
             <li className="item">About</li>
             <li className="item">Shop</li>
             <li className="item">Contact</li>
-            <li className="item">cash</li>
+            <Link to="/Cart">
+              <li className="item heart">
+                <BsHeartFill />
+              </li>
+            </Link>
             <li className="item cart">
               <FaCartPlus />
               [0]

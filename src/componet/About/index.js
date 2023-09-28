@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "./about.css";
 import {Swiper, SwiperSlide} from "swiper/react";
 import StarRatings from "react-star-ratings";
@@ -9,8 +9,10 @@ import "swiper/css/pagination";
 import {AiOutlineHeart} from "react-icons/ai";
 // import required modules
 import {Navigation, Pagination, Autoplay} from "swiper/modules";
+import {UserContext} from "../../App";
 
 export default function About(props) {
+  const data = useContext(UserContext);
   return (
     <div className="about">
       <div className="prod">
@@ -33,12 +35,12 @@ export default function About(props) {
           // navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
           className="cards">
-          {props.mdata.map((e) => {
+          {data.all.slice(0, 10).map((e) => {
             return (
               <SwiperSlide className="slider">
                 <div className="ca">
-                  <div className="image">
-                    <img className="img" src={e.imageCover} />
+                  <div className="image t">
+                    <img className="img t" src={e.imageCover} />
                   </div>
                   <div className="txt">
                     <div className="lable">{e.title}</div>
@@ -57,12 +59,12 @@ export default function About(props) {
                         />
                       </div>
                     </div>{" "}
-                    <div className="add">
-                      <div className="la-add">ADD TO CART +</div>
-                      <div className="heart">
-                        <AiOutlineHeart />
-                      </div>
-                    </div>
+                    {/* <div className="add">
+                        <div className="la-add">ADD TO CART +</div>
+                        <div className="heart">
+                          <AiOutlineHeart />
+                        </div>
+                      </div> */}
                   </div>
                 </div>
               </SwiperSlide>

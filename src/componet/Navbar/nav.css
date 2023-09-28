@@ -6,6 +6,7 @@
   display: flex;
   position: fixed;
   align-items: center;
+  top: 0;
   z-index: 12;
   justify-content: space-between;
   transition: 0.3s all ease-out;
@@ -170,4 +171,31 @@ body {
 }
 .about {
   height: 80vh;
+}
+.heart {
+  color: #72b2f7fa;
+  font-size: 18px;
+  width: 25px;
+  border-radius: 50%;
+  display: flex;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+}
+.heart.show {
+  background-color: #fff;
+}
+.heart .h {
+  cursor: pointer;
+  display: block;
+}
+.heart .b {
+  display: none;
+}
+.heart.active .h {
+  display: none;
+}
+.heart.active .b {
+  cursor: pointer;
+  display: block;
 }

@@ -53,3 +53,13 @@
   flex-direction: column;
   align-items: center;
 }
+.All-pro {
+  margin: 5px;
+  cursor: pointer;
+}
+.All-pro a {
+  text-decoration: none;
+  color: #0573f0;
+  font-weight: 600;
+  font-size: 18px;
+}
