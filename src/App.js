@@ -8,12 +8,14 @@ import axios from "axios";
 import Proudects, {Usecart} from "./componet/produects";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Cart from "./componet/Cart/Cart";
+import {useDispatch} from "react-redux";
+import {data} from "./feathers/Data";
 
-export const UserContext = React.createContext();
 function App() {
   const [all, setall] = useState([]);
   const [cart, setcart] = useState([]);
   // console.log(cart);
+  const dispatch = useDispatch();
   useEffect(() => {
     axios
       .get("https://ecommerce.routemisr.com/api/v1/products")
@@ -21,6 +23,8 @@ function App() {
         // setdata(response.data.data.slice(11, 23));
         // setmdata(response.data.data.slice(0, 10));
         // []
+        console.log(response.data.data);
+        dispatch(data(response.data.data));
         setall(response.data.data);
       });
   }, []);
@@ -31,21 +35,14 @@ function App() {
         <Route
           path="/allproducts"
           exact
-          element={
-            <UserContext.Provider value={{all}}>
-              <Proudects name="All" shop={setcart} />
-            </UserContext.Provider>
-          }
+          element={<Proudects name="All" shop={setcart} />}
         />
+        <Route path="/" element={<Home shop={setcart} />} />
         <Route
-          path="/"
-          element={
-            <UserContext.Provider value={{all}}>
-              <Home shop={setcart} />
-            </UserContext.Provider>
-          }
+          path="/Cart"
+          exact
+          element={<Cart data={cart} setdata={setcart} />}
         />
-        <Route path="/Cart" exact element={<Cart data={cart} />} />
       </Routes>
     </BrowserRouter>
   );

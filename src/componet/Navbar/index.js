@@ -34,7 +34,7 @@ export default function Nav() {
           <ul className="list">
             {" "}
             <Link to="/">
-              <li className="item active">Home</li>
+              <li className="item">Home</li>
             </Link>
             <li className="item">About</li>
             <li className="item">Shop</li>

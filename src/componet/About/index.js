@@ -9,10 +9,18 @@ import "swiper/css/pagination";
 import {AiOutlineHeart} from "react-icons/ai";
 // import required modules
 import {Navigation, Pagination, Autoplay} from "swiper/modules";
-import {UserContext} from "../../App";
+// import {UserContext} from "../../App";
+import {useSelector} from "react-redux";
 
 export default function About(props) {
-  const data = useContext(UserContext);
+  const [data, setdata] = useState([]);
+  // const data = useContext(UserContext);
+  const usedata = useSelector((stata) => stata.data[0]);
+  useEffect(() => {
+    if (usedata != undefined) {
+      setdata(usedata);
+    }
+  });
   return (
     <div className="about">
       <div className="prod">
@@ -35,7 +43,7 @@ export default function About(props) {
           // navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
           className="cards">
-          {data.all.slice(0, 10).map((e) => {
+          {data.slice(0, 10).map((e) => {
             return (
               <SwiperSlide className="slider">
                 <div className="ca">

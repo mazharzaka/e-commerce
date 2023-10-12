@@ -1,0 +1,47 @@
+.wish {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-size: 25px;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #000000;
+  letter-spacing: 2px;
+}
+.wish span {
+  font-size: 15px;
+}
+.cart-list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.cotain {
+  width: 80%;
+  margin-top: 121px;
+  display: flex;
+  justify-content: center;
+}
+.card-list {
+  margin-top: 50px;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.no {
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+#list-p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 230px;
+}
+#btnq {
+  width: 230px;
+}
