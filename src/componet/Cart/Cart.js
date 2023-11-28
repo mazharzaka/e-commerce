@@ -1,6 +1,7 @@
 import React from "react";
 import "./cart.css";
 import {AiOutlineHeart, AiOutlineEye} from "react-icons/ai";
+import {IoIosHeartDislike} from "react-icons/io";
 import {BsHeartbreak} from "react-icons/bs";
 import StarRatings from "react-star-ratings";
 import {useDispatch, useSelector} from "react-redux";
@@ -92,7 +93,12 @@ export default function Cart() {
       </div>
       <div className="card-list">
         {cart.length == 0 ? (
-          <div className="no">Nothing on this list</div>
+          <div>
+            <div class="big hearty">
+              <IoIosHeartDislike />
+            </div>
+            <div className="no">Nothing on this list</div>
+          </div>
         ) : (
           cart.map((e) => {
             return (

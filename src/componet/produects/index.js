@@ -1,28 +1,29 @@
 import React, {useContext} from "react";
 import {AiOutlineHeart, AiOutlineEye} from "react-icons/ai";
 import {BsHeartbreak} from "react-icons/bs";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import StarRatings from "react-star-ratings";
 import {useDispatch} from "react-redux";
 import {useState} from "react";
 import {Tooltip} from "react-tooltip";
 import {useSelector} from "react-redux";
 import {useEffect} from "react";
-import {Filter, List} from "../../feathers/Wish";
-export const Usecart = React.createContext();
+import {Classid, Filter, List, watchlist} from "../../feathers/Wish";
+
 export default function Proudects(props) {
   const [data, setdata] = useState([]);
-  const [cart, setcart] = useState([]);
+
   const [fav, setfav] = useState([]);
+  const [ids, setids] = useState([]);
   const dispatch = useDispatch();
   const usedata = useSelector((stata) => stata);
+  const navigate = useNavigate();
   useEffect(() => {
     if (usedata != undefined) {
       setdata(usedata.data[0]);
-      setcart(usedata.Wish.wishlist);
+      setids(usedata.Wish.ids);
     }
   });
-
   const photo = (e) => {
     if (e.target.classList.value == "image") {
       e.target.classList.add("active");
@@ -52,7 +53,7 @@ export default function Proudects(props) {
         e.target.parentElement.parentElement.parentElement.getAttribute("id");
     }
     const item = data.find((e) => e._id == id);
-
+    // setids([...ids, ids]);
     if (
       (item != undefined && e.target.parentElement.classList == "heart show") ||
       (item != undefined &&
@@ -70,6 +71,7 @@ export default function Proudects(props) {
       console.log(item.id);
       setfav([...fav, item.id]);
       dispatch(List(item));
+      dispatch(Classid(id));
     }
   };
   const signs = (e) => {
@@ -113,7 +115,11 @@ export default function Proudects(props) {
                       <div className="hover" id={e._id}>
                         {" "}
                         <div
-                          className="heart show"
+                          className={
+                            ids.includes(e._id)
+                              ? "heart show active"
+                              : "heart show"
+                          }
                           data-tooltip-id="my-tooltip"
                           data-tooltip-content="WishList">
                           <AiOutlineHeart className="h" onClick={hearthandle} />
@@ -123,7 +129,13 @@ export default function Proudects(props) {
                         <div
                           className="heart show"
                           data-tooltip-id="my-tooltip"
-                          data-tooltip-content="Watch Proudect">
+                          data-tooltip-content="Watch Proudect"
+                          onClick={() => {
+                            const watch = data.find((el) => el._id == e._id);
+                            dispatch(watchlist(watch));
+                            console.log(watch);
+                            navigate(`/Watchlist/${e._id}`);
+                          }}>
                           <AiOutlineEye />
                         </div>
                       </div>
@@ -178,7 +190,11 @@ export default function Proudects(props) {
                       <div className="hover" id={e._id}>
                         {" "}
                         <div
-                          className="heart show"
+                          className={
+                            ids.includes(e._id)
+                              ? "heart show active"
+                              : "heart show"
+                          }
                           data-tooltip-id="my-tooltip"
                           data-tooltip-content="WishList">
                           <AiOutlineHeart className="h" onClick={hearthandle} />
@@ -187,7 +203,13 @@ export default function Proudects(props) {
                         <div
                           className="heart show"
                           data-tooltip-id="my-tooltip"
-                          data-tooltip-content="Watch Proudect">
+                          data-tooltip-content="Watch Proudect"
+                          onClick={() => {
+                            const watch = data.find((el) => el._id == e._id);
+                            // dispatch(Watch(watch));
+                            console.log(watch);
+                            navigate(`/Watchlist/${e._id}`);
+                          }}>
                           <AiOutlineEye />
                         </div>
                       </div>

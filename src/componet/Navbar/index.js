@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import "./nav.css";
 import {FaCartPlus} from "react-icons/fa";
 import {BsHeartFill} from "react-icons/bs";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 export default function Nav() {
   const [nav, setnav] = useState(true);
   useEffect(() => {
@@ -27,23 +27,23 @@ export default function Nav() {
       </div>
       <div className="nav">
         {" "}
-        <Link to="/">
+        <NavLink to="/">
           <div className="logo">Mazhar</div>
-        </Link>
+        </NavLink>
         <div className="list">
           <ul className="list">
             {" "}
-            <Link to="/">
+            <NavLink to="/">
               <li className="item">Home</li>
-            </Link>
+            </NavLink>
             <li className="item">About</li>
             <li className="item">Shop</li>
             <li className="item">Contact</li>
-            <Link to="/Cart">
+            <NavLink to="/Cart">
               <li className="item heart">
                 <BsHeartFill />
               </li>
-            </Link>
+            </NavLink>
             <li className="item cart">
               <FaCartPlus />
               [0]

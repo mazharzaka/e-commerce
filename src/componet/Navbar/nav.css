@@ -17,11 +17,11 @@
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
 .nav.active .item.active {
-  color: #1d207a;
+  color: #72b2f7fa;
   font-weight: 600;
 }
 .nav.active .cart {
-  color: #1d207a;
+  color: #72b2f7fa;
 }
 * {
   margin: 0;
@@ -173,7 +173,7 @@ body {
   height: 80vh;
 }
 .heart {
-  color: #72b2f7fa;
+  color: #ef4444;
   font-size: 18px;
   width: 25px;
   border-radius: 50%;

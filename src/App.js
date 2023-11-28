@@ -10,6 +10,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Cart from "./componet/Cart/Cart";
 import {useDispatch} from "react-redux";
 import {data} from "./feathers/Data";
+import Watchlist from "./componet/Watchlist";
 
 function App() {
   const [all, setall] = useState([]);
@@ -32,17 +33,10 @@ function App() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route
-          path="/allproducts"
-          exact
-          element={<Proudects name="All" shop={setcart} />}
-        />
-        <Route path="/" element={<Home shop={setcart} />} />
-        <Route
-          path="/Cart"
-          exact
-          element={<Cart data={cart} setdata={setcart} />}
-        />
+        <Route path="/allproducts" exact element={<Proudects name="All" />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/Cart" exact element={<Cart />} />
+        <Route path="/Watchlist/:id" exact element={<Watchlist />} />
       </Routes>
     </BrowserRouter>
   );
