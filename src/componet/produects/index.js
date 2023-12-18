@@ -1,7 +1,9 @@
-import React, {useContext} from "react";
+import React from "react";
 import {AiOutlineHeart, AiOutlineEye} from "react-icons/ai";
 import {BsHeartbreak} from "react-icons/bs";
 import {Link, useNavigate} from "react-router-dom";
+import {ToastContainer, toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import StarRatings from "react-star-ratings";
 import {useDispatch} from "react-redux";
 import {useState} from "react";
@@ -9,6 +11,7 @@ import {Tooltip} from "react-tooltip";
 import {useSelector} from "react-redux";
 import {useEffect} from "react";
 import {Classid, Filter, List, watchlist} from "../../feathers/Wish";
+import {Addquick, Qty} from "../../feathers/Addquick";
 
 export default function Proudects(props) {
   const [data, setdata] = useState([]);
@@ -24,6 +27,23 @@ export default function Proudects(props) {
       setids(usedata.Wish.ids);
     }
   });
+  const notify = (e) => {
+    let id = e.target.getAttribute("id");
+    toast.success("Success Notification !", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    const pro = data.find((e) => e._id === id);
+    // console.log(pro);
+    const quick = {
+      ...pro,
+      qty: 1,
+    };
+    dispatch(Addquick(quick));
+    //     if(usedata.cart){
+    // dispatch(Qty(id));
+    //  }
+    console.log(quick);
+  };
   const photo = (e) => {
     if (e.target.classList.value == "image") {
       e.target.classList.add("active");
@@ -41,6 +61,13 @@ export default function Proudects(props) {
   const hearthandle = (e) => {
     var id;
     // props.shop([]);
+    {
+      toast.error("Update Watchlist", {
+        icon: "❤️",
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+
     if (
       e.target.parentElement.classList == "heart show" ||
       "heart show active"
@@ -95,6 +122,7 @@ export default function Proudects(props) {
   return (
     <>
       <Tooltip id="my-tooltip" place="right-end" />
+      <ToastContainer />
       <div className="prodects">
         {" "}
         <div className="prod">
@@ -145,7 +173,10 @@ export default function Proudects(props) {
                         onMouseLeave={photo1}>
                         <img className="p-pic1" src={e.imageCover} />
                         <img className="p-pic2" src={e.images[1]} />
-                        <div className="Quick">Quick Add</div>
+                        <div className="Quick" id={e._id} onClick={notify}>
+                          {/* <button  className="addherf">  </button> */}
+                          Quick Add
+                        </div>
                       </div>
                       <div className="txt">
                         <div className="lable">{e.title}</div>
@@ -219,7 +250,11 @@ export default function Proudects(props) {
                         onMouseLeave={photo1}>
                         <img className="p-pic1" src={e.imageCover} />
                         <img className="p-pic2" src={e.images[1]} />
-                        <div className="Quick">Quick Add</div>
+                        <div className="Quick" id={e._id} onClick={notify}>
+                          {/* <button className="addherf"></button> */}
+                          Quick Add
+                          {/* <ToastContainer /> */}
+                        </div>
                       </div>
                       <div className="txt">
                         <div className="lable">{e.title}</div>

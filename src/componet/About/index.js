@@ -30,7 +30,7 @@ export default function About(props) {
       <div>
         <Swiper
           autoHeight={true}
-          slidesPerView={3}
+          slidesPerView={"auto"}
           spaceBetween={20}
           // navigation={true}
           autoplay={{

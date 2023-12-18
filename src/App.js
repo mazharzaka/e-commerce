@@ -11,6 +11,7 @@ import Cart from "./componet/Cart/Cart";
 import {useDispatch} from "react-redux";
 import {data} from "./feathers/Data";
 import Watchlist from "./componet/Watchlist";
+import Quick from "./componet/quickadd";
 
 function App() {
   const [all, setall] = useState([]);
@@ -36,6 +37,7 @@ function App() {
         <Route path="/allproducts" exact element={<Proudects name="All" />} />
         <Route path="/" element={<Home />} />
         <Route path="/Cart" exact element={<Cart />} />
+        <Route path="/Quick" exact element={<Quick />} />
         <Route path="/Watchlist/:id" exact element={<Watchlist />} />
       </Routes>
     </BrowserRouter>

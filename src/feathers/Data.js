@@ -5,7 +5,9 @@ export const userslice = createSlice({
   initialState: [],
   reducers: {
     data: (stata, action) => {
-      stata.push(action.payload);
+      if (stata.length === 0) {
+        stata.push(action.payload);
+      }
       // if (stata.data != undefined) {}
     },
   },

@@ -1,4 +1,5 @@
-.big {
+.big,
+.big-icon {
   font-size: 90px;
   color: rgb(114 178 247 / 13%);
   position: absolute;
@@ -8,10 +9,16 @@
   margin-top: -41px;
   letter-spacing: 1px;
 }
-.big.hearty {
+.big-icon.hearty {
   font-size: 227px;
   margin-top: -1px;
   margin-right: 198px;
+  color: #ef444440;
+}
+.big-icon.hearty.car {
+  font-size: 215px;
+  margin-top: -1px;
+  margin-left: 30px;
   color: #ef444440;
 }
 .sm {

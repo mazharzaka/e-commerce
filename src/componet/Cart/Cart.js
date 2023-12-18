@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {useState} from "react";
 import {Link} from "react-router-dom";
-import {Clear} from "../../feathers/Wish";
+import {Clear, Filter} from "../../feathers/Wish";
 
 export default function Cart() {
   const [cart, setcart] = useState([]);
@@ -35,30 +35,31 @@ export default function Cart() {
       e.target.parentElement.classList.remove("active");
     }
   };
-  const hearthandle = (e) => {
-    var id;
-    // shop([]);
-    if (
-      e.target.parentElement.classList == "heart show" ||
-      "heart show active"
-    ) {
-      e.target.parentElement.classList.toggle("active");
-      id = e.target.parentElement.parentElement.getAttribute("id");
-    } else {
-      e.target.parentElement.parentElement.classList.toggle("active");
-      id =
-        e.target.parentElement.parentElement.parentElement.getAttribute("id");
-    }
-    const item = data.find((e) => e._id == id);
-    console.log(id);
-    if (
-      (item != undefined && e.target.parentElement.classList == "heart show") ||
-      (item != undefined &&
-        e.target.parentElement.parentElement.classList == "heart show")
-    ) {
-      console.log(data.filter((e) => e._id != id));
-      setdata(data.filter((e) => e._id != id));
-    }
+  const hearthandle = (e, id) => {
+    // var id;
+    // // shop([]);
+    // if (
+    //   e.target.parentElement.classList == "heart show" ||
+    //   "heart show active"
+    // ) {
+    //   e.target.parentElement.classList.toggle("active");
+    //   id = e.target.parentElement.parentElement.getAttribute("id");
+    // } else {
+    //   e.target.parentElement.parentElement.classList.toggle("active");
+    //   id =
+    //     e.target.parentElement.parentElement.parentElement.getAttribute("id");
+    // }
+    // const item = data.find((e) => e._id == id);
+    // console.log(id);
+    // if (
+    //   (item != undefined && e.target.parentElement.classList == "heart show") ||
+    //   (item != undefined &&
+    //     e.target.parentElement.parentElement.classList == "heart show")
+    // ) {
+    //   console.log(data.filter((e) => e._id != id));
+    //   setdata(data.filter((e) => e._id != id));
+    // }
+    dispatch(Filter(id));
   };
   const signs = (e) => {
     if (e.target.className == "ca") {
@@ -94,7 +95,7 @@ export default function Cart() {
       <div className="card-list">
         {cart.length == 0 ? (
           <div>
-            <div class="big hearty">
+            <div class="big-icon hearty">
               <IoIosHeartDislike />
             </div>
             <div className="no">Nothing on this list</div>
@@ -114,8 +115,14 @@ export default function Cart() {
                       className="heart show active"
                       data-tooltip-id="my-tooltip"
                       data-tooltip-content="WishList">
-                      <AiOutlineHeart className="h" onClick={hearthandle} />
-                      <BsHeartbreak className="b" onClick={hearthandle} />
+                      <AiOutlineHeart
+                        className="h"
+                        onClick={(el) => hearthandle(el, e.id)}
+                      />
+                      <BsHeartbreak
+                        className="b"
+                        onClick={(el) => hearthandle(el, e.id)}
+                      />
                     </div>
                     <div
                       className="heart show"

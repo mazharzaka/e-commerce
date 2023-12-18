@@ -14,7 +14,6 @@ export const wish = createSlice({
     },
     watchlist: (state, action) => {
       state.watchlist = [action.payload];
-      // if (stata.List != undefined) {}
     },
     Classid: (state, action) => {
       state.ids = [...state.ids, action.payload];

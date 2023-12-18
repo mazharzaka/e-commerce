@@ -2,9 +2,13 @@ import React, {useEffect, useState} from "react";
 import "./nav.css";
 import {FaCartPlus} from "react-icons/fa";
 import {BsHeartFill} from "react-icons/bs";
+import {BsBagFill} from "react-icons/bs";
 import {NavLink} from "react-router-dom";
+import {useSelector} from "react-redux";
 export default function Nav() {
   const [nav, setnav] = useState(true);
+  const cart = useSelector((state) => state.Cart.cart);
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 150 && nav) {
@@ -33,22 +37,24 @@ export default function Nav() {
         <div className="list">
           <ul className="list">
             {" "}
-            <NavLink to="/">
+            <NavLink to="/" className="home-na">
               <li className="item">Home</li>
             </NavLink>
             <li className="item">About</li>
             <li className="item">Shop</li>
             <li className="item">Contact</li>
-            <NavLink to="/Cart">
-              <li className="item heart">
-                <BsHeartFill />
-              </li>
-            </NavLink>
-            <li className="item cart">
-              <FaCartPlus />
-              [0]
-            </li>
           </ul>
+          <NavLink to="/Cart">
+            <li className="item heart">
+              <BsHeartFill />
+            </li>
+          </NavLink>
+          <NavLink to="/Quick" className="hr">
+            <li className="item cart">
+              <BsBagFill />
+              <span className="length">{cart.length}</span>
+            </li>{" "}
+          </NavLink>
         </div>
       </div>
     </>
